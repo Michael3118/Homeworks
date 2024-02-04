@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Michael/OneDrive/Рабочий стол/DB/HW.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="1341"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,2:mainhw"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="hw" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="62"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">-- Create a table
+CREATE TABLE IF NOT EXISTS original_table (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    age INTEGER
+);
+
+-- Rename the table
+ALTER TABLE original_table RENAME TO renamed_table;
+
+-- Add a new column
+ALTER TABLE renamed_table ADD COLUMN city TEXT;
+
+-- Insert rows
+INSERT INTO renamed_table (name, age, city) VALUES ('John Doe', 25, 'New York');
+INSERT INTO renamed_table (name, age, city) VALUES ('Jane Smith', 30, 'Los Angeles');
+
+-- Update rows
+UPDATE renamed_table SET age = 26 WHERE name = 'John Doe';
+
+-- Delete rows
+DELETE FROM renamed_table WHERE name = 'Jane Smith';
+
+
+</sql><sql name="SQL 2">
+-- Task 1: Display names with aliases
+SELECT first_name AS &quot;First Name&quot;, last_name AS &quot;Last Name&quot;
+FROM employees;
+
+-- Task 2: Get unique department IDs
+SELECT DISTINCT department_id
+FROM employees;
+
+-- Task 3: Get all employee details ordered by first name in descending order
+SELECT *
+FROM employees
+ORDER BY first_name DESC;
+
+-- Task 4: Get names, salary, and PF of all employees (PF is 12% of salary)
+SELECT first_name, last_name, salary, ROUND(salary * 0.12, 2) AS PF
+FROM employees;
+
+-- Task 5: Get maximum and minimum salary
+SELECT MAX(salary) AS max_salary, MIN(salary) AS min_salary
+FROM employees;
+
+-- Task 6: Get monthly salary (rounded to 2 decimal places) of each employee
+SELECT first_name, last_name, ROUND(salary / 12, 2) AS monthly_salary
+FROM employees;
+</sql><current_tab id="1"/></tab_sql></sqlb_project>
