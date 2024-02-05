@@ -1,0 +1,50 @@
+
+#task1
+-- Create a table
+CREATE TABLE IF NOT EXISTS original_table (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    age INTEGER
+);
+
+-- Rename the table
+ALTER TABLE original_table RENAME TO renamed_table;
+
+-- Add a new column
+ALTER TABLE renamed_table ADD COLUMN city TEXT;
+
+-- Insert rows
+INSERT INTO renamed_table (name, age, city) VALUES ('John Doe', 25, 'New York');
+INSERT INTO renamed_table (name, age, city) VALUES ('Jane Smith', 30, 'Los Angeles');
+
+-- Update rows
+UPDATE renamed_table SET age = 26 WHERE name = 'John Doe';
+
+-- Delete rows
+DELETE FROM renamed_table WHERE name = 'Jane Smith';
+
+#task2
+-- Task 1: Display names with aliases
+SELECT first_name AS "First Name", last_name AS "Last Name"
+FROM employees;
+
+-- Task 2: Get unique department IDs
+SELECT DISTINCT department_id
+FROM employees;
+
+-- Task 3: Get all employee details ordered by first name in descending order
+SELECT *
+FROM employees
+ORDER BY first_name DESC;
+
+-- Task 4: Get names, salary, and PF of all employees (PF is 12% of salary)
+SELECT first_name, last_name, salary, ROUND(salary * 0.12, 2) AS PF
+FROM employees;
+
+-- Task 5: Get maximum and minimum salary
+SELECT MAX(salary) AS max_salary, MIN(salary) AS min_salary
+FROM employees;
+
+-- Task 6: Get monthly salary (rounded to 2 decimal places) of each employee
+SELECT first_name, last_name, ROUND(salary / 12, 2) AS monthly_salary
+FROM employees;
